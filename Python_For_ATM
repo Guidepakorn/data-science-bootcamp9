@@ -1,0 +1,52 @@
+class ATM :
+  pass
+from random import randint
+
+class ATM:
+    def __init__(self, account_name, bank_name, initial): ## double underscore or called dunder
+        self.account_name = account_name
+        self.bank_name = bank_name
+        self.balance = initial
+
+    ## string representation
+    def __str__(self):
+        return f"This is an account of {self.account_name}, bank: {self.bank_name}"
+
+    ## method => function
+    def check_balance(self):
+        print(f"Balance: {self.balance} THB")
+
+    def deposit(self, money):
+        self.balance += money
+        print(f"Deposit successfully: your new balance: {self.balance} THB")
+
+
+    def withdraw(self, money):
+        if self.balance >= money :
+            self.balance -= money
+            print(f"Witdraw successfully: your new balance: {self.balance} THB")
+        else:
+            print("Transaction failed, Your balance is insufficient.")
+
+    def pay_bill(self, money):
+        if self.balance >= money :
+            self.balance -= money
+            print(f"Transaction completed : your new balance: {self.balance} THB")
+        else:
+            print("Transaction failed, Your balance is insufficient.")
+
+    def get_OTP(self):
+        otp = randint(1000, 9999)
+        print(f"Your OTP: {otp} This OTP will be available in the next 2 minutes.")
+
+    def receipt_print(self):
+        while(True):
+            user_print = input(f"Do you want receipt? (y/n): {print}")
+            if user_print == "y":
+                print("print receipt")
+                break
+            if user_print == "n":
+                print("Thank you")
+                break
+            else :
+                print("invalid input, please try again.")
